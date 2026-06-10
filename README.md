@@ -1,4 +1,4 @@
-readme_content <- '# fastrenameR
+# fastrenameR
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/fastrenameR)](https://CRAN.R-project.org/package=fastrenameR)
@@ -31,52 +31,52 @@ readme_content <- '# fastrenameR
 
 ## Installation
 
-\`\`\`r
+```r
 devtools::install_github("Serigne-Fallu/fastrenameR")
-\`\`\`
+```
 
 ## Quick Start
 
 ### 1. Explore your metadata
 
-\`\`\`r
+```r
 library(fastrenameR)
 show_columns("mpox_metadata.tsv")
-\`\`\`
+```
 
 ### 2. Basic renaming
 
-\`\`\`r
+```r
 fastrenameR("mpox_metadata.tsv",
             "mpox_sequences.fasta",
             id_col = "accessionVersion",
             out_cols = c("geoLocCountry", "sampleCollectionDate"))
-\`\`\`
+```
 
-**Before:** `>PQ123456`
+**Before:** `>PQ123456`  
 **After:** `>USA_2024-05-15`
 
 ### 3. Rename with date standardization for BEAST
 
-\`\`\`r
+```r
 fastrenameR("metadata.tsv", "sequences.fasta",
             id_col = "accessionVersion",
             out_cols = c("geoLocCountry", "sampleCollectionDate"),
             standardize_dates = TRUE)
-\`\`\`
+```
 
 ### 4. Validate dates
 
-\`\`\`r
+```r
 dates <- c("2024-05-15", "5-15-2024", "2024.5", "2024", "invalid")
 validate_dates(dates, report_format = "summary")
-\`\`\`
+```
 
 ## Real-world use cases
 
 ### MPOX sequences for BEAST analysis
 
-\`\`\`r
+```r
 library(fastrenameR)
 
 show_columns("mpox_G1_metadata_2026-04-28.tsv")
@@ -87,31 +87,31 @@ fastrenameR("mpox_G1_metadata_2026-04-28.tsv",
             out_cols = c("geoLocCountry", "sampleCollectionDate", "lineage"),
             standardize_dates = TRUE)
 # Output headers: >USA_2024-05-15_B.1.1.7
-\`\`\`
+```
 
 ### Compressed FASTA files
 
-\`\`\`r
+```r
 fastrenameR("metadata.tsv",
             "sequences.fasta.gz",
             id_col = "accessionVersion",
             out_cols = c("geoLocCountry", "sampleCollectionDate"))
-\`\`\`
+```
 
 ### Custom date parameters
 
-\`\`\`r
+```r
 fastrenameR("metadata.tsv", "sequences.fasta",
             id_col = "accessionVersion",
             out_cols = c("geoLocCountry", "sampleCollectionDate"),
             standardize_dates = TRUE,
             date_mid_month_day = 1,
             date_mid_year_day = 90)
-\`\`\`
+```
 
 ## Complete phylogenetic workflow
 
-\`\`\`r
+```r
 library(fastrenameR)
 
 show_columns("project_metadata.tsv")
@@ -123,17 +123,17 @@ output_file <- fastrenameR("project_metadata.tsv",
                            standardize_dates = TRUE)
 
 validate_dates(names(output_file), report_format = "summary")
-\`\`\`
+```
 
 ## Troubleshooting
 
-**Column not found**
+**Column not found**  
 Use `show_columns()` to see exact column names.
 
-**Duplicate IDs**
+**Duplicate IDs**  
 Ensure `id_col` has unique values — last duplicate is kept.
 
-**Missing sequences**
+**Missing sequences**  
 Check that all FASTA headers match IDs in your metadata.
 
 ## Performance
@@ -151,9 +151,9 @@ Check that all FASTA headers match IDs in your metadata.
 
 ## Citation
 
-\`\`\`r
+```r
 citation("fastrenameR")
-\`\`\`
+```
 
 ## License
 
@@ -163,8 +163,3 @@ MIT © Serigne Fallou Mbacke NGOM
 
 - Issues: https://github.com/Serigne-Fallu/fastrenameR/issues
 - Email: serignefalloumb.ngom@gmail.com
-'
-
-writeLines(readme_content, "README.md")
-cat("README.md cree avec succes!\n")
-cat("Lignes:", length(readLines("README.md")), "\n")
