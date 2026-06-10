@@ -1,0 +1,38 @@
+---
+title: "Introduction to fastrenameR"
+author: "Serigne Fallou Mbacke NGOM"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to fastrenameR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+`fastrenameR` is an R package for fast and flexible renaming of FASTA sequence headers using metadata files.
+
+## Installation
+
+```r
+devtools::install_github("Serigne-Fallu/fastrenameR")
+```
+
+## Basic Usage
+
+```r
+library(fastrenameR)
+show_columns("metadata.tsv")
+fastrenameR("metadata.tsv", "sequences.fasta",
+            id_col = "accessionVersion",
+            out_cols = c("geoLocCountry", "sampleCollectionDate"))
+```
+
+## Date Standardization
+
+```r
+standardize_dates(c("5-15-2024", "5-2024", "2024.5", "2024"))
+standardize_fasta_dates("sequences.fasta", "BEASTready.fasta")
+```
+
