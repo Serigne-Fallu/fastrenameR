@@ -1,0 +1,33 @@
+Package: fastrenameR
+Title: Fast FASTA Header Renaming Using Metadata with Date Standardization
+Version: 0.2.0
+Authors@R: 
+    person("Serigne Fallou Mbacke", "NGOM", 
+           email = "serignefalloumb.ngom@gmail.com",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0000-8818-047X"))
+Description: Fast and flexible renaming of Pathoplexus FASTA sequence 
+    headers using metadata files. Supports gzipped files, automatic 
+    sanitisation, and includes date standardization for BEAST/BEAUti 
+    compatibility. Convert various date formats (Month-Day-Year, 
+    Month-Year, Decimal year, Year only) to ISO standard (YYYY-MM-DD).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Imports:
+    readr,
+    stringr,
+    lubridate (>= 1.9.0)
+Suggests:
+    Biostrings,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    covr
+VignetteBuilder: knitr
+URL: https://github.com/Serigne-Fallu/fastrenameR
+BugReports: https://github.com/Serigne-Fallu/fastrenameR/issues
+Depends: 
+    R (>= 3.5.0)
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0
